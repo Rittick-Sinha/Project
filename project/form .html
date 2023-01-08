@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPLAINT FORM</title>
+    <link rel="stylesheet" href="form .css">
+</head>
+
+<body>
+    <div class="box">
+        <form action="" method="post" name="google-sheet">
+            <div class="form">
+                <h2>COMPLAINT FORM</h2>
+                <div class="inputBox">
+                    <input type="text" name="Name" required="required">
+                    <span>NAME </span>
+                    <i></i>
+                </div>
+
+                <div class="inputBox">
+                    <input type="text" name="Roll Number" required="required">
+                    <span>ROLL NUMBER</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="Email-ID" required="required">
+                    <span>EMAIL-ID</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="Phone Number" required="required">
+                    <span>PHONE NUMBER</span>
+                    <i></i>
+                </div>
+                <div class="inputBox">
+                    <textarea name="COMPLAIN BOX" id="description" cols="30" rows="10"
+                        placeholder="Write Your Complain.." spellcheck="false"></textarea>
+                </div>
+                <input class="submit" type="submit" name="Submit" value="SUBMIT">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzrxcRhnXXSWpN9JSRzTzGEwlmOFjy7moi81lBSXj_0fApWe4y91qUifZn8cj07lcYr/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
